@@ -9,14 +9,29 @@ add.addEventListener("click", async () => {
 
         /*--------------- Get breed (Hint: Parse from URL) ---------------- */
         // Your code here
+        let breed = url.split("/")[4];
 
         /*------------ Create new dog card with the url above ------------- */
         /* (use the HTML structure for the current dog image in the index.html
             file to create a new image with the url) */
         // Your code here
 
+        let newListElement = document.createElement("li");
+        let newFigure = document.createElement("figure");
+        let newImg = document.createElement("img");
+            newImg.src = url;
+        let newFigCap = document.createElement("figcaption");
+            newFigCap.innerText = breed;
+
+        newFigure.append(newImg);
+        newFigure.append(newFigCap);
+        newListElement.append(newFigure);
+
         /* Add the new dog card as a child to the ul in the .gallery element */
         // Your code here
+        let list = document.querySelector("ul");
+        list.append(newListElement);
+
 
     } catch (e) {
         console.log("Couldn't fetch dog :(")
@@ -28,9 +43,11 @@ const removeFirst = document.getElementById("remove-first");
 removeFirst.addEventListener("click", () => {
     /*-------------------- Select the first dog card --------------------- */
     // Your code here
+    let dogToRemove = document.querySelector("ul li");
 
     /*-------------------- Remove the first dog card --------------------- */
     // Your code here
+    dogToRemove.remove();
 });
 
 /************************** REMOVE LAST DOG BUTTON ***************************/
@@ -38,6 +55,9 @@ const removeLast = document.getElementById("remove-last");
 removeLast.addEventListener("click", () => {
     /*-------------------- Select the last dog card ----------------------- */
     // Your code here
+    let dogToRemove = document.querySelector("ul li:last-child");
+    dogToRemove.remove();
+
 
     /*-------------------- Remove the last dog card ----------------------- */
     // Your code here
